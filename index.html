@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Frontend Mentor | Contact form</title>
+  </head>
+  <body>
+    <div id="toast">
+      <h2 class="toast-title">
+        <img src="./assets/images/icon-success-check.svg" alt="Check mark icon"/>
+        Message Sent!
+      </h2>
+      <p class="toast-desc">Thanks for completing the form. We'll be in touch soon!</p>
+    </div>
+    <div id="wrap">
+      <h1 class="title">Contact Us</h1>
+      <main>
+        <form class="form">
+          <div class="input-row">
+            <label class="label" for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" class="input" />
+          </div>
+          <div class="input-row">
+            <label class="label" for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" class="input" />
+          </div>
+          <div class="input-row">
+            <label class="label" for="email">Email Address</label>
+            <input type="text" id="email" name="email" class="input" />
+          </div>
+          <div class="input-row">
+            <label class="label">Query Type</label>
+            <div class="col--2">
+              <button type="button" class="radio--btn">
+                <input type="radio" id="general" name="general" />
+                <label class="radio-label" for="general">General Enquiry</label>
+              </button>
+              <button type="button" class="radio--btn">
+                <input type="radio" id="support" name="support" />
+                <label class="radio-label" for="support">Support Request</label>
+              </button>
+            </div>
+          </div>
+          <div class="input-row">
+            <label for="message" class="label">Message</label>
+            <textarea id="message" cols="5" name="message"></textarea>
+          </div>
+          <div class="input-row input-row--checkbox">
+            <input type="checkbox" id="consent" name="consent" />
+            <label for="consent" class="label label-checkbox">I consent to being contacted by the team</label>
+          </div>
+          <button class="submit-btn">Submit</button>
+        </form>
+      </main>
+      
+    </div>
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by
+      <a href="https://github.com/jaylspace/contact-form" target="_blank">Jay L</a>.
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
