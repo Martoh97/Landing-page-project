@@ -1,113 +1,93 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+/* CSS Reset and Base Styles */
 :root {
-  --font-size-md: 1rem;
-
-  --duration: 0.3s;
-  --transition: var(--duration) ease;
-
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 2rem;
+  
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 2.5rem;
+  
+  --transition-duration: 0.3s;
+  --transition-base: var(--transition-duration) ease;
+  
   --color-green-200: hsl(148, 38%, 91%);
   --color-green-300: hsl(186, 15%, 59%);
   --color-green-500: hsl(169, 82%, 27%);
   --color-green-700: hsl(187, 24%, 22%);
-
   --color-red: hsl(0, 66%, 56%);
   --color-white: hsl(0, 0%, 100%);
+  
+  --border-radius-sm: 0.5rem;
+  --border-radius-md: 0.75rem;
+  --border-radius-lg: 1rem;
 }
 
-a:link,
-a:visited,
-a:hover,
-a:active {
-  color: inherit;
-  text-decoration: none;
+/* Modern CSS Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-ol,
-ul,
-li {
-  list-style: none;
-}
-
-button {
-  color: inherit;
-  font: inherit;
-  border: none;
-  outline: none;
-  background: none;
-  cursor: pointer;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font: inherit;
-}
-
-textarea,
-input {
-  color: inherit;
-  font: inherit;
-  border: none;
-  border-radius: unset;
-  outline: none;
-  background: none;
-}
-
-textarea {
-  width: 100%;
-  resize: none;
-}
-
+/* Base Element Styles */
 body {
-  width: 100dvw;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: var(--color-green-700);
-  font-size: var(--font-size-md);
-  font-family: 'Karla', sans-serif;
-  line-height: 1;
+  font: var(--font-size-base) 'Karla', sans-serif;
+  line-height: 1.5;
   background-color: var(--color-green-200);
+  padding: var(--spacing-md);
 }
 
+/* Reset Common Elements */
+a { color: inherit; text-decoration: none; }
+button, input, textarea {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+  outline: none;
+}
+button { cursor: pointer; }
+h1, h2, h3, h4, h5, h6 { font: inherit; }
+ul, ol { list-style: none; }
+
+/* Layout Components */
 #wrap {
-  width: 46rem;
-  margin: 8rem auto;
-  padding: 2.5rem;
-  border-radius: 1rem;
+  width: 100%;
+  max-width: 46rem;
+  margin: var(--spacing-2xl) auto;
+  padding: var(--spacing-2xl);
+  border-radius: var(--border-radius-lg);
   background-color: var(--color-white);
 }
 
+/* Toast Notification */
 #toast {
-  width: 28.125rem;
-  padding: 1.5rem;
   position: fixed;
-  top: 1.5rem;
+  top: var(--spacing-lg);
   left: 50%;
+  width: min(28.125rem, 90%);
+  padding: var(--spacing-lg);
   color: var(--color-white);
-  border-radius: 0.75rem;
+  border-radius: var(--border-radius-md);
   background-color: var(--color-green-700);
-  transform: translate(-50%, 0%);
-  transition: transform var(--transition), opacity var(--transition);
+  transform: translate(-50%, -150%);
   visibility: hidden;
   opacity: 0;
+  transition: transform var(--transition-base), opacity var(--transition-base);
 }
 
 #toast.active {
@@ -117,8 +97,8 @@ body {
 .toast-title {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
   font-weight: 600;
 }
 
@@ -126,23 +106,10 @@ body {
   color: var(--color-green-200);
 }
 
-@keyframes slide-from-top {
-  0% {
-    transform: translate(-50%, -150%);
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  100% {
-    transform: translate(-50%, 0);
-    visibility: visible;
-    opacity: 1;
-  }
-}
-
+/* Form Styles */
 .title {
-  margin-bottom: 2rem;
-  font-size: 2rem;
+  margin-bottom: var(--spacing-xl);
+  font-size: var(--font-size-xl);
   font-weight: 700;
   letter-spacing: -1px;
 }
@@ -150,48 +117,99 @@ body {
 .form {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--spacing-xs);
 }
 
 .input-row {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--spacing-xs);
   padding: 0.5%;
 }
 
 .input-row--checkbox {
   flex-direction: row;
   align-items: center;
-  gap: 1rem;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
 }
 
-.col--2 {
-  display: grid;
-  grid-template-columns: 2fr 2fr;
-  gap: 2rem;
-}
-
-.input {
-  padding: 0.75rem 1.5rem;
+/* Form Input Styles */
+.input, .radio--btn, textarea {
+  padding: var(--spacing-sm) var(--spacing-lg);
   border: 1px solid var(--color-green-300);
-  border-radius: 0.5rem;
-  transition: border-color var(--transition);
-  cursor: pointer;
+  border-radius: var(--border-radius-sm);
+  transition: border-color var(--transition-base);
 }
 
-.input.error {
-  border-color: var(--color-red);
-}
-
-.input:hover,
-.input:focus-within,
-.radio--btn:hover {
+.input:hover, .input:focus-within,
+.radio--btn:hover, textarea:hover, textarea:focus {
   border-color: var(--color-green-500);
 }
 
+.input.error, textarea.error {
+  border-color: var(--color-red);
+}
+
+/* Radio and Checkbox Styles */
+.radio--btn {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.radio--btn.selected {
+  border-color: var(--color-green-500);
+  background-color: var(--color-green-200);
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  position: relative;
+  appearance: none;
+  cursor: pointer;
+}
+
+input[type='radio'] {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-green-300);
+}
+
+input[type='checkbox'] {
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 2px;
+  border: 2px solid var(--color-green-300);
+}
+
+input[type='radio']:checked,
+input[type='checkbox']:checked {
+  border: none;
+}
+
+input[type='radio']:checked::before,
+input[type='checkbox']:checked::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+input[type='radio']:checked::before {
+  background-image: url('./assets/images/icon-radio-selected.svg');
+}
+
+input[type='checkbox']:checked::before {
+  background-image: url('./assets/images/icon-checkbox-check.svg');
+}
+
+/* Label Styles */
 .label {
-  align-self: flex-start;
   position: relative;
   line-height: 1.5;
 }
@@ -204,136 +222,95 @@ body {
   color: var(--color-green-500);
 }
 
-.radio--btn {
-  display: flex;
-  align-items: center;
-  gap: 0.875rem;
-  padding: 0.75rem 1.5rem;
-  border: 1px solid var(--color-green-300);
-  border-radius: 0.5rem;
-  background-color: transparent;
-  transition: border-color var(--transition), background-color var(--transition);
-}
-
-.radio--btn.selected {
-  border-color: var(--color-green-500);
-  background-color: var(--color-green-200);
-}
-
-input[type='radio'],
-.radio-label,
-.label-checkbox {
-  cursor: pointer;
-}
-
-input[type='radio'] {
-  width: 1.25rem;
-  height: 1.25rem;
-  position: relative;
-  appearance: none;
-  border-radius: 50%;
-  border: 2px solid var(--color-green-300);
-}
-
-input[type='radio']:checked {
-  border: none;
-}
-
-input[type='radio']:checked::before {
-  content: '';
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-image: url('./assets/images/icon-radio-selected.svg');
-  background-size: cover;
-}
-
-input[type='checkbox'] {
-  width: 1.125rem;
-  height: 1.125rem;
-  position: relative;
-  appearance: none;
-  border-radius: 2px;
-  border: 2px solid var(--color-green-300);
-}
-
-input[type='checkbox']:checked {
-  border: none;
-}
-
-input[type='checkbox']:checked::before {
-  content: '';
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-image: url('./assets/images/icon-checkbox-check.svg');
-  background-size: cover;
-}
-
-.input-row--checkbox {
-  flex-wrap: wrap;
-}
-
-.input-row--checkbox > .error-state {
-  display: block;
-}
-
+/* Textarea Styles */
 textarea {
+  width: 100%;
   height: 6.7rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 1.125rem;
+  resize: none;
+  font-size: var(--font-size-lg);
   line-height: 1.5;
-  border: 1px solid var(--color-green-300);
-  border-radius: 0.5rem;
-  transition: border-color var(--transition);
 }
 
-textarea.error {
-  border-color: var(--color-red);
+/* Submit Button */
+.submit-btn {
+  padding: var(--spacing-md) 0;
+  color: var(--color-white);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-green-500);
+  transition: opacity var(--transition-base);
 }
 
+.submit-btn:hover {
+  opacity: 0.9;
+}
+
+/* Error State */
 .error-state {
   color: var(--color-red);
   line-height: 1.5;
 }
 
-.submit-btn {
-  padding: 1rem 0;
-  color: var(--color-white);
-  font-size: 1.125rem;
-  font-weight: 700;
-  border-radius: 0.5rem;
-  background-color: var(--color-green-500);
+/* Animation */
+@keyframes slide-from-top {
+  0% {
+    transform: translate(-50%, -150%);
+    visibility: hidden;
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, 0);
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
-.attribution {
-  margin-bottom: 1.5rem;
-  font-size: 11px;
-  text-align: center;
+/* Responsive Grid */
+.col--2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-xl);
 }
 
-.attribution a {
-  color: hsl(228, 45%, 44%);
-}
-
+/* Media Queries */
 @media screen and (max-width: 47.5rem) {
+  :root {
+    --spacing-2xl: 2rem;
+  }
+  
   #wrap {
-    max-width: 90%;
+    margin: var(--spacing-xl) auto;
   }
 }
 
 @media screen and (max-width: 37.5rem) {
+  :root {
+    --font-size-xl: 1.75rem;
+    --spacing-2xl: 1.5rem;
+  }
+  
   .col--2 {
     grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .input-row--checkbox {
+    gap: var(--spacing-sm);
   }
 }
 
 @media screen and (max-width: 30rem) {
-  #toast {
-    max-width: 90%;
+  :root {
+    --font-size-lg: 1rem;
+    --spacing-lg: 1.25rem;
+  }
+  
+  #wrap {
+    padding: var(--spacing-lg);
+  }
+  
+  .title {
+    margin-bottom: var(--spacing-lg);
   }
 }
